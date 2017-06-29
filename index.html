@@ -23,7 +23,7 @@
         <button ng-click="addRecord()">Add</button>
         <button ng-click="deleteRecord()">Delete</button>
         <button ng-click="searchRecord()">Search</button>
-        <button ng-click="fetchRecord()">Fetch</button>
+<!--        <button ng-click="fetchRecord()">Fetch</button>-->
         <button ng-click="updateRecord()">Update</button>
     
     </fieldset>
@@ -32,6 +32,9 @@
     <div>
         <fieldset>
             <legend>List</legend>
+            Total Fields:{{totalCount()}}
+            Selected Field:{{selectedField()}}
+            Unselected Field:{{unselectedField()}}
             <table border="1">
                 <thead>
                    <tr>
@@ -47,7 +50,7 @@
                         <td>{{task.name}}</td>
                         <td>{{task.desc}}</td>
                         <td><img src="images/delete.png" ng-click="task.toggle()" alt="">
-                        <img src="images/edit.png" ng-click="task.toggleEdit()" alt=""></td>
+                        <img src="images/edit.png" ng-click="editRecord(task)" alt=""></td>
                     </tr>
                 </tbody>
             </table>

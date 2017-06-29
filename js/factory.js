@@ -32,6 +32,15 @@ app.factory("myfactory",()=>{
             obj.name = name;
             obj.desc = desc;
             this.taskArray[obj.id-1] = obj;
+        },
+        selectedFields(){
+            var obj = this.taskArray.filter((x)=>{
+                return x.markForDeletion || x.markForEdit;
+            });
+            return obj.length;
+        },
+        unselectedField(){
+            return this.taskArray.length - this.selectedFields();
         }
     };
             return object;

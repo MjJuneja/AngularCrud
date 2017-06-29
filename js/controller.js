@@ -12,14 +12,29 @@ app.controller("myctrl",($scope,myfactory)=>{
     $scope.searchRecord =()=>{
       $scope.tasks =  myfactory.searchRecord($scope.name);
     };
-    $scope.fetchRecord = ()=>{
-        obj = myfactory.receiveValue();
-        $scope.name = obj.name;
-        $scope.desc = obj.desc;
-
-    };
+//    $scope.fetchRecord = ()=>{
+//        obj = myfactory.receiveValue();
+//        $scope.name = obj.name;
+//        $scope.desc = obj.desc;
+//
+//    };
     $scope.updateRecord =()=>{
         myfactory.updateRecord($scope.name,$scope.desc,obj);
         $scope.tasks = myfactory.taskArray;
+    };
+    $scope.editRecord =(task)=>{
+        task.toggleEdit();
+        obj = myfactory.receiveValue();
+        $scope.name = obj.name;
+        $scope.desc = obj.desc;
+    };
+    $scope.totalCount = ()=>{
+        return myfactory.taskArray.length;
+    };
+    $scope.selectedField = ()=>{
+        return myfactory.selectedFields();
+    };
+    $scope.unselectedField = ()=>{
+        return myfactory.unselectedField();
     }
 });
